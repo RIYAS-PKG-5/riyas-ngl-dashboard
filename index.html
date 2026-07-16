@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0066)file:///C:/Users/User/Downloads/RIYAS_NGL_Project_Dashboard_4.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RIYAS NGL — Project Control Dashboard</title>
-<link href="./RIYAS NGL — Project Control Dashboard_files/css2" rel="stylesheet">
-<script src="./RIYAS NGL — Project Control Dashboard_files/chart.umd.min.js.download"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
     --bg:      #f4f6f9;
@@ -269,7 +269,7 @@
       <div class="kpi-value" style="color:var(--accent)">91.3<span style="font-size:15px">%</span></div>
       <div class="progress-wrap">
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted)"><span>Actual</span><span>Plan: 98.5%</span></div>
-        <div class="progress-bar-track"><div class="progress-bar-fill fill-blue" style="width: 91.3%;"></div></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill fill-blue" style="width:91.3%"></div></div>
       </div>
       <span class="kpi-delta neg">▼ -7.20% vs Plan</span>
     </div>
@@ -278,7 +278,7 @@
       <div class="kpi-label">Engineering</div>
       <div class="kpi-value" style="color:var(--green)">100<span style="font-size:15px">%</span></div>
       <div class="progress-wrap">
-        <div class="progress-bar-track"><div class="progress-bar-fill fill-green" style="width: 100%;"></div></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill fill-green" style="width:100%"></div></div>
       </div>
       <span class="kpi-delta pos">✓ COMPLETE</span>
     </div>
@@ -288,7 +288,7 @@
       <div class="kpi-value" style="color:var(--gold)">94.7<span style="font-size:15px">%</span></div>
       <div class="progress-wrap">
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted)"><span>Actual</span><span>Plan: 100%</span></div>
-        <div class="progress-bar-track"><div class="progress-bar-fill fill-gold" style="width: 94.7%;"></div></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill fill-gold" style="width:94.7%"></div></div>
       </div>
       <span class="kpi-delta neg">▼ -5.29%</span>
     </div>
@@ -298,7 +298,7 @@
       <div class="kpi-value" style="color:var(--gold)">87.4<span style="font-size:15px">%</span></div>
       <div class="progress-wrap">
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted)"><span>Actual</span><span>Plan: 97.0%</span></div>
-        <div class="progress-bar-track"><div class="progress-bar-fill fill-gold" style="width: 87.4%;"></div></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill fill-gold" style="width:87.4%"></div></div>
       </div>
       <span class="kpi-delta neg">▼ -9.64%</span>
     </div>
@@ -314,7 +314,7 @@
       <div class="kpi-label">Days Elapsed / Remaining</div>
       <div class="kpi-value big" style="color:var(--navy)">1005 <span style="font-size:13px;color:var(--muted)">/</span> 212</div>
       <div class="progress-bar-track" style="margin-top:10px">
-        <div class="progress-bar-fill fill-blue" style="width: 82.6%;"></div>
+        <div class="progress-bar-fill fill-blue" style="width:82.6%"></div>
       </div>
       <div class="kpi-sub">Start: 10-Oct-2023 · End: 08-Feb-2027</div>
     </div>
@@ -326,23 +326,23 @@
 
     <div class="panel">
       <div class="panel-title"><span class="dot"></span>Overall Progress S-Curve (Cumulative %)</div>
-      <div class="chart-wrap tall"><canvas id="scurveChart" width="741" height="280" style="display: block; box-sizing: border-box; height: 280px; width: 741px;"></canvas></div>
+      <div class="chart-wrap tall"><canvas id="scurveChart"></canvas></div>
     </div>
 
     <div class="panel">
       <div class="panel-title"><span class="dot" style="background:var(--gold)"></span>Plan vs Actual — Key Construction Fronts</div>
-      <div class="chart-wrap tall"><canvas id="disciplineChart" width="741" height="280" style="display: block; box-sizing: border-box; height: 280px; width: 741px;"></canvas></div>
+      <div class="chart-wrap tall"><canvas id="disciplineChart"></canvas></div>
     </div>
 
   </div>
 
   <!-- ─── RESOURCES & PROCUREMENT ─── -->
-  <div class="section-title">RESOURCES &amp; PROCUREMENT</div>
+  <div class="section-title">RESOURCES & PROCUREMENT</div>
   <div class="three-col">
 
     <!-- MANPOWER -->
     <div class="panel">
-      <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Manpower &amp; Man-Hours</div>
+      <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Manpower & Man-Hours</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
         <div class="stat-box">
           <div class="stat-box-label">Manpower Plan</div>
@@ -361,8 +361,8 @@
           <div class="stat-box-val" style="color:var(--red)">2.136M</div>
         </div>
       </div>
-      <div style="font-family:&#39;Rajdhani&#39;,sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;text-transform:uppercase">Monthly Manpower Trend</div>
-      <div class="chart-wrap" style="height:130px"><canvas id="manpowerChart" width="474" height="130" style="display: block; box-sizing: border-box; height: 130px; width: 474px;"></canvas></div>
+      <div style="font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;text-transform:uppercase">Monthly Manpower Trend</div>
+      <div class="chart-wrap" style="height:130px"><canvas id="manpowerChart"></canvas></div>
     </div>
 
     <!-- PROCUREMENT -->
@@ -371,27 +371,27 @@
       <div class="proc-row">
         <span class="proc-name">Engineered Equipment — Inspectable</span>
         <span class="proc-pct" style="color:var(--gold)">96.2%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width: 96.2%; background: linear-gradient(90deg,#a85a0a,var(--gold));"></div></div>
+        <div class="proc-bar"><div class="proc-fill" style="width:96.2%;background:linear-gradient(90deg,#a85a0a,var(--gold))"></div></div>
       </div>
       <div class="proc-row">
         <span class="proc-name">Engineered Equipment — Non-Inspectable</span>
         <span class="proc-pct" style="color:var(--gold)">92.5%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width: 92.5%; background: linear-gradient(90deg,#a85a0a,var(--gold));"></div></div>
+        <div class="proc-bar"><div class="proc-fill" style="width:92.5%;background:linear-gradient(90deg,#a85a0a,var(--gold))"></div></div>
       </div>
       <div class="proc-row">
         <span class="proc-name">Civil / Structural Materials</span>
         <span class="proc-pct" style="color:var(--green)">100%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width: 100%; background: linear-gradient(90deg,#067a6a,var(--green));"></div></div>
+        <div class="proc-bar"><div class="proc-fill" style="width:100%;background:linear-gradient(90deg,#067a6a,var(--green))"></div></div>
       </div>
       <div class="proc-row">
         <span class="proc-name">Pre-Engineered Steel Buildings</span>
         <span class="proc-pct" style="color:var(--green)">100%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width: 100%; background: linear-gradient(90deg,#067a6a,var(--green));"></div></div>
+        <div class="proc-bar"><div class="proc-fill" style="width:100%;background:linear-gradient(90deg,#067a6a,var(--green))"></div></div>
       </div>
       <div class="proc-row">
         <span class="proc-name">Overall Procurement</span>
         <span class="proc-pct" style="color:var(--gold)">94.7%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width: 94.7%; background: linear-gradient(90deg,var(--accent2),var(--accent));"></div></div>
+        <div class="proc-bar"><div class="proc-fill" style="width:94.7%;background:linear-gradient(90deg,var(--accent2),var(--accent))"></div></div>
       </div>
       <div style="margin-top:16px;background:#f8fafd;border-radius:8px;padding:12px">
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px">
@@ -408,7 +408,7 @@
     <!-- CONSTRUCTION WEEKLY -->
     <div class="panel">
       <div class="panel-title"><span class="dot" style="background:var(--accent)"></span>Construction Weekly Progress</div>
-      <div class="chart-wrap" style="height:195px"><canvas id="weeklyConsChart" width="474" height="195" style="display: block; box-sizing: border-box; height: 195px; width: 474px;"></canvas></div>
+      <div class="chart-wrap" style="height:195px"><canvas id="weeklyConsChart"></canvas></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
         <div class="stat-box">
           <div class="stat-box-label">Prev Wk Plan</div>
@@ -432,7 +432,7 @@
 
     <div class="panel">
       <div class="panel-title"><span class="dot"></span>Buildings Progress — Plan vs Actual</div>
-      <div class="chart-wrap" style="height:340px"><canvas id="buildingChart" width="741" height="340" style="display: block; box-sizing: border-box; height: 340px; width: 741px;"></canvas></div>
+      <div class="chart-wrap" style="height:340px"><canvas id="buildingChart"></canvas></div>
     </div>
 
     <div class="panel">
@@ -448,332 +448,7 @@
               <th style="width:90px">Progress</th>
             </tr>
           </thead>
-          <tbody id="buildingTable">
-    <tr>
-      <td class="bld-name" style="font-weight:500">Admin Building</td>
-      <td class="pct" style="color:#0077b6">97.2%</td>
-      <td class="pct critical">84.4%</td>
-      <td><span class="spi-badge spi-warn">0.869</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:97.2%"></div>
-          <div class="mini-bar-actual" style="width:84.4%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼12.8%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Dinning Building</td>
-      <td class="pct" style="color:#0077b6">99.0%</td>
-      <td class="pct critical">88.1%</td>
-      <td><span class="spi-badge spi-warn">0.890</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99%"></div>
-          <div class="mini-bar-actual" style="width:88.1%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼10.9%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Fire Station Building</td>
-      <td class="pct" style="color:#0077b6">99.8%</td>
-      <td class="pct critical">82.9%</td>
-      <td><span class="spi-badge spi-bad">0.831</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.8%"></div>
-          <div class="mini-bar-actual" style="width:82.9%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼16.9%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Clinic Building</td>
-      <td class="pct" style="color:#0077b6">97.5%</td>
-      <td class="pct critical">81.4%</td>
-      <td><span class="spi-badge spi-bad">0.835</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:97.5%"></div>
-          <div class="mini-bar-actual" style="width:81.4%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼16.1%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Communication Tower</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct behind">94.7%</td>
-      <td><span class="spi-badge spi-warn">0.947</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:94.7%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼5.3%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Gas Station Building</td>
-      <td class="pct" style="color:#0077b6">98.2%</td>
-      <td class="pct critical">82.8%</td>
-      <td><span class="spi-badge spi-bad">0.843</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:98.2%"></div>
-          <div class="mini-bar-actual" style="width:82.8%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼15.4%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Central Maintenance Shop</td>
-      <td class="pct" style="color:#0077b6">95.9%</td>
-      <td class="pct critical">80.3%</td>
-      <td><span class="spi-badge spi-bad">0.837</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:95.9%"></div>
-          <div class="mini-bar-actual" style="width:80.3%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼15.6%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Hydro Test Shop (CMS)</td>
-      <td class="pct" style="color:#0077b6">99.6%</td>
-      <td class="pct critical">84.0%</td>
-      <td><span class="spi-badge spi-bad">0.844</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.6%"></div>
-          <div class="mini-bar-actual" style="width:84%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼15.6%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Masjid Building</td>
-      <td class="pct" style="color:#0077b6">99.9%</td>
-      <td class="pct critical">86.4%</td>
-      <td><span class="spi-badge spi-warn">0.864</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.9%"></div>
-          <div class="mini-bar-actual" style="width:86.4%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼13.5%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Sanitary Liftstation</td>
-      <td class="pct" style="color:#0077b6">98.8%</td>
-      <td class="pct critical">64.4%</td>
-      <td><span class="spi-badge spi-bad">0.651</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:98.8%"></div>
-          <div class="mini-bar-actual" style="width:64.4%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼34.4%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Material Coord. Bldg</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct critical">87.1%</td>
-      <td><span class="spi-badge spi-warn">0.871</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:87.1%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼12.9%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Chemical Storage Bldg</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct critical">86.1%</td>
-      <td><span class="spi-badge spi-warn">0.861</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:86.1%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼13.9%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Emergency Gen. Building</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct behind">90.3%</td>
-      <td><span class="spi-badge spi-warn">0.903</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:90.3%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼9.7%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Contractor Building</td>
-      <td class="pct" style="color:#0077b6">99.1%</td>
-      <td class="pct critical">83.9%</td>
-      <td><span class="spi-badge spi-bad">0.847</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.1%"></div>
-          <div class="mini-bar-actual" style="width:83.9%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼15.2%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Emergency Gen. (Helipad)</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct ahead">100.0%</td>
-      <td><span class="spi-badge spi-good">1.000</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:100%;background:#0a9e8a"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#0a9e8a">▲0.0%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Helipad Area</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct critical">60.4%</td>
-      <td><span class="spi-badge spi-bad">0.604</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:60.4%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼39.6%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Equipment Shelter (FS)</td>
-      <td class="pct" style="color:#0077b6">99.4%</td>
-      <td class="pct critical">81.1%</td>
-      <td><span class="spi-badge spi-bad">0.816</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.4%"></div>
-          <div class="mini-bar-actual" style="width:81.1%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼18.3%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Sun Shelter (CMS)</td>
-      <td class="pct" style="color:#0077b6">99.3%</td>
-      <td class="pct critical">88.2%</td>
-      <td><span class="spi-badge spi-warn">0.888</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.3%"></div>
-          <div class="mini-bar-actual" style="width:88.2%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼11.1%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Fuel Dispenser Shelter</td>
-      <td class="pct" style="color:#0077b6">96.9%</td>
-      <td class="pct critical">71.8%</td>
-      <td><span class="spi-badge spi-bad">0.741</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:96.9%"></div>
-          <div class="mini-bar-actual" style="width:71.8%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼25.1%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Fuel Storage Tanks</td>
-      <td class="pct" style="color:#0077b6">99.4%</td>
-      <td class="pct critical">78.9%</td>
-      <td><span class="spi-badge spi-bad">0.794</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.4%"></div>
-          <div class="mini-bar-actual" style="width:78.9%;background:#d62839"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#d62839">▼20.5%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Test Pit &amp; Shelter</td>
-      <td class="pct" style="color:#0077b6">99.9%</td>
-      <td class="pct behind">91.9%</td>
-      <td><span class="spi-badge spi-warn">0.920</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:99.9%"></div>
-          <div class="mini-bar-actual" style="width:91.9%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼8.0%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Hose Drying Shelter (FS)</td>
-      <td class="pct" style="color:#0077b6">94.1%</td>
-      <td class="pct behind">90.1%</td>
-      <td><span class="spi-badge spi-good">0.958</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:94.1%"></div>
-          <div class="mini-bar-actual" style="width:90.1%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼4.0%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Cylinder Storage Shelter</td>
-      <td class="pct" style="color:#0077b6">97.9%</td>
-      <td class="pct behind">89.3%</td>
-      <td><span class="spi-badge spi-warn">0.912</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:97.9%"></div>
-          <div class="mini-bar-actual" style="width:89.3%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼8.6%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Smoking Shelter</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct behind">95.5%</td>
-      <td><span class="spi-badge spi-good">0.955</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:95.5%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼4.5%</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="bld-name" style="font-weight:500">Bus Drop Off Shelter</td>
-      <td class="pct" style="color:#0077b6">100.0%</td>
-      <td class="pct behind">91.4%</td>
-      <td><span class="spi-badge spi-warn">0.914</span></td>
-      <td>
-        <div class="mini-bar">
-          <div class="mini-bar-plan" style="width:100%"></div>
-          <div class="mini-bar-actual" style="width:91.4%;background:#e07b20"></div>
-        </div>
-        <div style="font-size:9px;font-weight:600;color:#e07b20">▼8.6%</div>
-      </td>
-    </tr></tbody>
+          <tbody id="buildingTable"></tbody>
         </table>
       </div>
     </div>
@@ -786,11 +461,11 @@
 
     <div class="panel">
       <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Construction Fronts — Actual vs Plan Cumulative</div>
-      <div class="chart-wrap tall"><canvas id="frontsChart" width="741" height="280" style="display: block; box-sizing: border-box; height: 280px; width: 741px;"></canvas></div>
+      <div class="chart-wrap tall"><canvas id="frontsChart"></canvas></div>
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span class="dot" style="background:var(--accent)"></span>Project Milestones &amp; Timeline</div>
+      <div class="panel-title"><span class="dot" style="background:var(--accent)"></span>Project Milestones & Timeline</div>
       <div class="timeline">
         <div class="timeline-item done">
           <div class="tl-name">Engineering Complete</div>
@@ -798,7 +473,7 @@
           <div class="tl-status" style="color:var(--green)">✓ 100% COMPLETE</div>
         </div>
         <div class="timeline-item done">
-          <div class="tl-name">Mobilization &amp; TCF</div>
+          <div class="tl-name">Mobilization & TCF</div>
           <div class="tl-date">Oct 2023 – Oct 2024 (Actual)</div>
           <div class="tl-status" style="color:var(--green)">✓ 100.0% COMPLETE</div>
         </div>
@@ -851,7 +526,7 @@
   <div class="three-col">
     <div class="panel">
       <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Engineering Phases</div>
-      <div class="chart-wrap" style="height:200px"><canvas id="engPhaseChart" width="474" height="200" style="display: block; box-sizing: border-box; height: 200px; width: 474px;"></canvas></div>
+      <div class="chart-wrap" style="height:200px"><canvas id="engPhaseChart"></canvas></div>
     </div>
     <div class="panel" style="grid-column:span 2">
       <div class="panel-title"><span class="dot"></span>Engineering Package Submissions — Budgeted Labor Units</div>
@@ -880,19 +555,19 @@
         <div>
           <div style="font-size:10px;color:var(--muted);margin-bottom:4px">IFC Package (Final)</div>
           <div style="display:flex;align-items:center;gap:8px">
-            <span style="font-family:&#39;Rajdhani&#39;,sans-serif;font-size:18px;font-weight:700;color:var(--green)">5,266 hrs</span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--green)">5,266 hrs</span>
             <span class="chip chip-green" style="font-size:9px">COMPLETE ✓</span>
           </div>
-          <div class="progress-bar-track" style="margin-top:4px"><div class="progress-bar-fill fill-green" style="width: 100%;"></div></div>
+          <div class="progress-bar-track" style="margin-top:4px"><div class="progress-bar-fill fill-green" style="width:100%"></div></div>
         </div>
         <div>
           <div style="font-size:10px;color:var(--muted);margin-bottom:4px">Project Duration</div>
-          <div style="font-family:&#39;Rajdhani&#39;,sans-serif;font-size:18px;font-weight:700;color:var(--accent)">295 days</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--accent)">295 days</div>
           <div style="font-size:10px;color:var(--muted)">Oct 2023 – Feb 2024</div>
         </div>
         <div>
           <div style="font-size:10px;color:var(--muted);margin-bottom:4px">Engineering SPI</div>
-          <div style="font-family:&#39;Rajdhani&#39;,sans-serif;font-size:26px;font-weight:700;color:var(--green)">1.000</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:var(--green)">1.000</div>
           <div style="font-size:10px;color:var(--green);font-weight:600">On Schedule — Complete</div>
         </div>
       </div>
@@ -1205,6 +880,5 @@ window.addEventListener('load',()=>{
   },300);
 });
 </script>
-
-
-</body></html>
+</body>
+</html>
