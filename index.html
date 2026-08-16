@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RIYAS NGL — Project Control Dashboard · Week 164</title>
+<title>RIYAS NGL — Project Control Dashboard · Week 167</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
@@ -18,7 +18,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
 
-  /* HEADER */
+  /* ── HEADER ── */
   .header{
     background:linear-gradient(135deg,#0d2137 0%,#1a4a8a 100%);
     padding:0 32px;display:flex;align-items:center;justify-content:space-between;
@@ -43,10 +43,10 @@
   .cutoff{font-size:11px;color:rgba(255,255,255,0.6);text-align:right}
   .cutoff strong{color:#fff;font-size:14px;display:block}
 
-  /* LAYOUT */
+  /* ── LAYOUT ── */
   .main{padding:22px 28px;max-width:1680px;margin:0 auto}
 
-  /* SECTION TITLE */
+  /* ── SECTION TITLE ── */
   .section-title{
     font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
     letter-spacing:3px;text-transform:uppercase;color:var(--accent);
@@ -54,7 +54,7 @@
     margin-bottom:14px;margin-top:26px;
   }
 
-  /* STATUS CHIPS */
+  /* ── STATUS CHIPS ── */
   .status-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
   .chip{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
     letter-spacing:.8px;padding:4px 13px;border-radius:20px;border:1px solid currentColor}
@@ -63,7 +63,7 @@
   .chip-red{color:#d62839;background:rgba(214,40,57,0.08)}
   .chip-gold{color:#e07b20;background:rgba(224,123,32,0.08)}
 
-  /* KPI GRID */
+  /* ── KPI GRID ── */
   .kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
   .kpi{
     background:var(--panel);border:1px solid var(--border);border-radius:10px;
@@ -84,60 +84,71 @@
   .kpi-delta.neg{background:rgba(214,40,57,.1);color:var(--red)}
   .kpi-delta.pos{background:rgba(10,158,138,.1);color:var(--green)}
 
-  /* PROGRESS BARS */
+  /* ── PROGRESS BARS ── */
   .pbar-track{height:6px;background:#e8eef5;border-radius:3px;overflow:hidden;margin-top:4px}
-  .pbar-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+  .pbar-fill{height:100%;border-radius:3px;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
   .fill-blue{background:linear-gradient(90deg,var(--accent2),var(--accent))}
   .fill-green{background:linear-gradient(90deg,#067a6a,var(--green))}
   .fill-gold{background:linear-gradient(90deg,#a85a0a,var(--gold))}
+  .fill-red{background:linear-gradient(90deg,#9e1020,var(--red))}
 
-  /* PANELS */
+  /* ── PANELS ── */
   .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
   .panel-title{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;
     letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);
     margin-bottom:16px;display:flex;align-items:center;gap:8px}
   .panel-title .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
-  /* GRIDS */
+  /* ── GRID LAYOUTS ── */
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
 
-  /* BUILDING TABLE */
+  /* ── BUILDING TABLE ── */
   .bld-table{width:100%;border-collapse:collapse}
   .bld-table th{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
     color:var(--muted);padding:7px 8px;border-bottom:2px solid var(--border);
-    text-align:left;font-weight:600;background:#f8fafd}
-  .bld-table td{padding:6px 8px;font-size:11.5px;border-bottom:1px solid #f0f4f8}
+    text-align:left;font-weight:600;background:#f8fafd;position:sticky;top:0;z-index:1}
+  .bld-table td{padding:6px 8px;font-size:11.5px;border-bottom:1px solid #f0f4f8;vertical-align:middle}
   .bld-table tr:hover td{background:#f4f8fd}
   .pct{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600}
-  .ahead{color:var(--green)} .behind{color:var(--gold)} .critical{color:var(--red)}
+  .ahead{color:var(--green)}.behind{color:var(--gold)}.critical{color:var(--red)}
   .spi-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;display:inline-block}
   .spi-good{background:#d1f5f0;color:#056b5c}
   .spi-warn{background:#fef3e2;color:#a85a0a}
   .spi-bad{background:#fde8ea;color:#9e1020}
   .mini-bar{height:5px;border-radius:3px;overflow:hidden;position:relative;background:#e8eef5;margin-top:3px}
-  .mini-plan{height:100%;background:rgba(0,119,182,0.3);position:absolute;border-radius:3px}
+  .mini-plan{height:100%;background:rgba(0,119,182,0.28);position:absolute;border-radius:3px}
   .mini-act{height:100%;position:absolute;border-radius:3px}
 
-  /* CHART */
+  /* ── CHARTS ── */
   .chart-wrap{position:relative;height:220px}
   .chart-wrap.tall{height:285px}
 
-  /* PROC */
-  .proc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f4f8}
+  /* ── PROC ── */
+  .proc-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #f0f4f8}
   .proc-name{flex:1;font-size:12px;color:var(--text)}
-  .proc-pct{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;min-width:50px;text-align:right}
+  .proc-pct{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;min-width:52px;text-align:right}
   .proc-bar{flex:2;height:7px;background:#e8eef5;border-radius:4px;overflow:hidden}
   .proc-fill{height:100%;border-radius:4px}
 
-  /* STAT BOX */
+  /* ── STAT BOX ── */
   .stat-box{background:#f4f8fd;border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
   .stat-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
   .stat-val{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--navy)}
 
-  /* TIMELINE */
+  /* ── ALERT BADGE ── */
+  .alert-box{
+    background:#fff5f5;border:1px solid #f5c0c5;border-radius:8px;
+    padding:10px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;
+  }
+  .alert-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+  .alert-text{font-size:11.5px;color:var(--text)}
+  .alert-text strong{color:var(--red)}
+
+  /* ── TIMELINE ── */
   .timeline{position:relative;padding-left:18px}
-  .timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),transparent)}
+  .timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;
+    background:linear-gradient(to bottom,var(--accent),transparent)}
   .tl-item{position:relative;padding:7px 0 7px 20px;border-bottom:1px solid #f0f4f8}
   .tl-item::before{content:'';position:absolute;left:-12px;top:13px;
     width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:#fff}
@@ -148,7 +159,7 @@
   .tl-date{font-size:10px;color:var(--muted);margin-top:1px}
   .tl-status{font-size:10px;font-weight:600;margin-top:2px}
 
-  /* SUMMARY TABLE */
+  /* ── SUMMARY TABLE ── */
   .sum-table{width:100%;border-collapse:collapse}
   .sum-table th{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
     color:#fff;padding:9px 10px;background:var(--blue);text-align:center;font-weight:600}
@@ -158,13 +169,13 @@
   .var-pos{color:var(--green);font-weight:700}
   .var-neg{color:var(--red);font-weight:700}
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   .footer{text-align:center;padding:22px;color:var(--muted);font-size:11px;letter-spacing:1px;
     border-top:1px solid var(--border);margin-top:32px;background:#fff}
 
-  /* ANIM */
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
   .fi{animation:fadeUp .45s ease forwards;opacity:0}
   .fi:nth-child(1){animation-delay:.05s}.fi:nth-child(2){animation-delay:.1s}
   .fi:nth-child(3){animation-delay:.15s}.fi:nth-child(4){animation-delay:.2s}
@@ -174,44 +185,46 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ═══════ HEADER ═══════ -->
 <div class="header">
   <div class="header-left">
     <div class="logo-badge">ISF</div>
     <div>
       <div class="header-title">RIYAS NGL FRACTIONATION FACILITIES — ISF</div>
-      <div class="header-sub">Sinohydro Corporation Limited · Project Control Dashboard</div>
+      <div class="header-sub">Sinohydro Corporation Limited &nbsp;·&nbsp; Project Control Dashboard</div>
     </div>
   </div>
   <div class="header-right">
-    <div class="report-tag">WEEK <strong style="font-size:17px">164</strong> &nbsp;|&nbsp; WK NO. 146</div>
-    <div class="cutoff"><strong>25 JUL 2026</strong>Cut-off Date</div>
+    <div class="report-tag">WEEK <strong style="font-size:18px">167</strong>&nbsp;|&nbsp;WK NO. 149</div>
+    <div class="cutoff"><strong>15 AUG 2026</strong>Cut-off Date</div>
   </div>
 </div>
 
 <div class="main">
 
-  <!-- STATUS STRIP -->
+  <!-- ═══════ STATUS STRIP ═══════ -->
   <div class="section-title" style="margin-top:10px">PROJECT STATUS OVERVIEW</div>
   <div class="status-row">
     <span class="chip chip-blue">CONTRACT: ACTIVE</span>
-    <span class="chip chip-red">DELAY: -7.1% OVERALL</span>
+    <span class="chip chip-red">OVERALL DELAY: &minus;6.95%</span>
     <span class="chip chip-green">ENGINEERING: 100% COMPLETE ✓</span>
-    <span class="chip chip-gold">PROCUREMENT: 95.0% ACTUAL</span>
-    <span class="chip chip-red">CONSTRUCTION: -9.7% BEHIND PLAN</span>
-    <span class="chip chip-blue">DAYS REMAINING: 198</span>
+    <span class="chip chip-gold">PROCUREMENT: 95.49% ACTUAL</span>
+    <span class="chip chip-red">CONSTRUCTION: &minus;9.83% BEHIND PLAN</span>
+    <span class="chip chip-blue">DAYS REMAINING: 177</span>
     <span class="chip chip-gold">SPI: 0.900</span>
   </div>
 
-  <!-- KPI CARDS -->
+  <!-- ═══════ KPI CARDS ═══════ -->
   <div class="kpi-grid" style="margin-top:14px">
 
     <div class="kpi fi">
       <div class="kpi-label">Overall Progress</div>
-      <div class="kpi-value" style="color:var(--accent)">91.6<span style="font-size:15px">%</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px"><span>Actual</span><span>Plan: 98.8%</span></div>
-      <div class="pbar-track"><div class="pbar-fill fill-blue" style="width:91.6%"></div></div>
-      <span class="kpi-delta neg">▼ &minus;7.10% vs Plan</span>
+      <div class="kpi-value" style="color:var(--accent)">92.1<span style="font-size:15px">%</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px">
+        <span>Actual</span><span>Plan: 99.1%</span>
+      </div>
+      <div class="pbar-track"><div class="pbar-fill fill-blue" style="width:92.1%"></div></div>
+      <span class="kpi-delta neg">▼ &minus;6.95% vs Plan</span>
     </div>
 
     <div class="kpi green fi">
@@ -223,18 +236,22 @@
 
     <div class="kpi gold fi">
       <div class="kpi-label">Procurement</div>
-      <div class="kpi-value" style="color:var(--gold)">95.0<span style="font-size:15px">%</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px"><span>Actual</span><span>Plan: 100%</span></div>
-      <div class="pbar-track"><div class="pbar-fill fill-gold" style="width:95.0%"></div></div>
-      <span class="kpi-delta neg">▼ &minus;4.97%</span>
+      <div class="kpi-value" style="color:var(--gold)">95.5<span style="font-size:15px">%</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px">
+        <span>Actual</span><span>Plan: 100%</span>
+      </div>
+      <div class="pbar-track"><div class="pbar-fill fill-gold" style="width:95.5%"></div></div>
+      <span class="kpi-delta neg">▼ &minus;4.51%</span>
     </div>
 
     <div class="kpi red fi">
       <div class="kpi-label">Construction</div>
-      <div class="kpi-value" style="color:var(--gold)">87.8<span style="font-size:15px">%</span></div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px"><span>Actual</span><span>Plan: 97.5%</span></div>
-      <div class="pbar-track"><div class="pbar-fill fill-gold" style="width:87.8%"></div></div>
-      <span class="kpi-delta neg">▼ &minus;9.73%</span>
+      <div class="kpi-value" style="color:var(--gold)">88.4<span style="font-size:15px">%</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:8px">
+        <span>Actual</span><span>Plan: 98.2%</span>
+      </div>
+      <div class="pbar-track"><div class="pbar-fill fill-gold" style="width:88.4%"></div></div>
+      <span class="kpi-delta neg">▼ &minus;9.83%</span>
     </div>
 
     <div class="kpi fi">
@@ -246,14 +263,16 @@
 
     <div class="kpi fi">
       <div class="kpi-label">Days Elapsed / Remaining</div>
-      <div class="kpi-value" style="font-size:22px;color:var(--navy)">1,019 <span style="font-size:13px;color:var(--muted)">/</span> 198</div>
-      <div class="pbar-track" style="margin-top:10px"><div class="pbar-fill fill-blue" style="width:83.7%"></div></div>
-      <div class="kpi-sub">Start: 10-Oct-2023 · End: 08-Feb-2027</div>
+      <div class="kpi-value" style="font-size:22px;color:var(--navy)">1,040<span style="font-size:13px;color:var(--muted)">/</span>177</div>
+      <div class="pbar-track" style="margin-top:10px">
+        <div class="pbar-fill fill-blue" style="width:85.5%"></div>
+      </div>
+      <div class="kpi-sub">Start: 10-Oct-2023 &nbsp;·&nbsp; End: 08-Feb-2027</div>
     </div>
 
   </div>
 
-  <!-- PROGRESS ANALYSIS -->
+  <!-- ═══════ PROGRESS ANALYSIS ═══════ -->
   <div class="section-title">PROGRESS ANALYSIS</div>
   <div class="two-col">
 
@@ -269,25 +288,25 @@
 
   </div>
 
-  <!-- RESOURCES & PROCUREMENT -->
+  <!-- ═══════ RESOURCES & PROCUREMENT ═══════ -->
   <div class="section-title">RESOURCES & PROCUREMENT</div>
   <div class="three-col">
 
     <!-- MANPOWER -->
     <div class="panel">
-      <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Manpower & Man-Hours</div>
+      <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Manpower &amp; Man-Hours</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
         <div class="stat-box">
           <div class="stat-label">Manpower Plan</div>
-          <div class="stat-val" style="color:var(--accent)">126</div>
+          <div class="stat-val" style="color:var(--accent)">88</div>
         </div>
         <div class="stat-box">
           <div class="stat-label">Man-Hrs Cumul.</div>
-          <div class="stat-val" style="color:var(--green)">1.865M</div>
+          <div class="stat-val" style="color:var(--green)">1.885M</div>
         </div>
         <div class="stat-box">
           <div class="stat-label">Man-Hrs This Week</div>
-          <div class="stat-val" style="color:var(--gold)">7,555</div>
+          <div class="stat-val" style="color:var(--gold)">5,290</div>
         </div>
         <div class="stat-box">
           <div class="stat-label">Total Budgeted</div>
@@ -295,7 +314,7 @@
         </div>
       </div>
       <div style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;text-transform:uppercase">Monthly Manpower Trend</div>
-      <div class="chart-wrap" style="height:128px"><canvas id="manpowerChart"></canvas></div>
+      <div class="chart-wrap" style="height:130px"><canvas id="manpowerChart"></canvas></div>
     </div>
 
     <!-- PROCUREMENT -->
@@ -303,13 +322,13 @@
       <div class="panel-title"><span class="dot" style="background:var(--gold)"></span>Procurement Progress by Category</div>
       <div class="proc-row">
         <span class="proc-name">Engineered Equipment — Inspectable</span>
-        <span class="proc-pct" style="color:var(--gold)">97.0%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width:97%;background:linear-gradient(90deg,#a85a0a,var(--gold))"></div></div>
+        <span class="proc-pct" style="color:var(--gold)">97.7%</span>
+        <div class="proc-bar"><div class="proc-fill" style="width:97.7%;background:linear-gradient(90deg,#a85a0a,var(--gold))"></div></div>
       </div>
       <div class="proc-row">
         <span class="proc-name">Engineered Equipment — Non-Inspectable</span>
-        <span class="proc-pct" style="color:var(--gold)">93.1%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width:93.1%;background:linear-gradient(90deg,#a85a0a,var(--gold))"></div></div>
+        <span class="proc-pct" style="color:var(--gold)">93.8%</span>
+        <div class="proc-bar"><div class="proc-fill" style="width:93.8%;background:linear-gradient(90deg,#a85a0a,var(--gold))"></div></div>
       </div>
       <div class="proc-row">
         <span class="proc-name">Civil / Structural Materials</span>
@@ -323,29 +342,29 @@
       </div>
       <div class="proc-row">
         <span class="proc-name">Overall Procurement</span>
-        <span class="proc-pct" style="color:var(--gold)">95.0%</span>
-        <div class="proc-bar"><div class="proc-fill" style="width:95%;background:linear-gradient(90deg,var(--accent2),var(--accent))"></div></div>
+        <span class="proc-pct" style="color:var(--gold)">95.5%</span>
+        <div class="proc-bar"><div class="proc-fill" style="width:95.5%;background:linear-gradient(90deg,var(--accent2),var(--accent))"></div></div>
       </div>
       <div style="margin-top:14px;background:#f8fafd;border-radius:8px;padding:12px">
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px">
-          <span>Plan Cumulative: 100.0%</span><span>Actual: 95.03%</span>
+          <span>Plan Cumulative: 100.0%</span><span>Actual: 95.49%</span>
         </div>
         <div style="position:relative;height:10px;background:#e8eef5;border-radius:5px;overflow:hidden">
           <div style="position:absolute;height:100%;width:100%;background:rgba(0,119,182,0.18);border-radius:5px"></div>
-          <div style="position:absolute;height:100%;width:95.03%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:5px"></div>
+          <div style="position:absolute;height:100%;width:95.49%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:5px"></div>
         </div>
-        <div style="text-align:center;margin-top:6px;font-size:10px;color:var(--red);font-weight:600">▼ Variance: &minus;4.97%</div>
+        <div style="text-align:center;margin-top:6px;font-size:10px;color:var(--red);font-weight:600">▼ Variance: &minus;4.51%</div>
       </div>
     </div>
 
-    <!-- WEEKLY CONSTRUCTION -->
+    <!-- CONSTRUCTION WEEKLY -->
     <div class="panel">
       <div class="panel-title"><span class="dot" style="background:var(--accent)"></span>Construction Weekly Progress</div>
       <div class="chart-wrap" style="height:195px"><canvas id="weeklyChart"></canvas></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
         <div class="stat-box">
           <div class="stat-label">Prev Wk Plan</div>
-          <div class="stat-val" style="font-size:15px;color:var(--accent)">97.23%</div>
+          <div class="stat-val" style="font-size:15px;color:var(--accent)">98.05%</div>
         </div>
         <div class="stat-box">
           <div class="stat-label">This Wk Actual</div>
@@ -353,33 +372,63 @@
         </div>
         <div class="stat-box" style="background:#fde8ea;border-color:#f5c0c5">
           <div class="stat-label" style="color:var(--red)">Variance</div>
-          <div class="stat-val" style="font-size:15px;color:var(--red)">-0.11%</div>
+          <div class="stat-val" style="font-size:15px;color:var(--red)">+0.02%</div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- BUILDING COMPLETION -->
-  <div class="section-title">CONSTRUCTION — BUILDING COMPLETION STATUS (LEVEL 2)</div>
+  <!-- ═══════ CRITICAL ALERTS ═══════ -->
+  <div class="section-title">CRITICAL ITEMS REQUIRING ATTENTION</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:4px">
+    <div class="alert-box">
+      <div class="alert-icon">🚨</div>
+      <div class="alert-text"><strong>Helipad Area</strong> — Plan 100% | Actual 60.4% | Variance <strong>&minus;39.6%</strong>. Critical delay, contract completion at risk.</div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-icon">🚨</div>
+      <div class="alert-text"><strong>Sanitary Liftstation</strong> — Plan 99.6% | Actual 65.7% | Variance <strong>&minus;33.9%</strong>. Escalation required.</div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-text"><strong>Road Works</strong> — Plan 87.3% | Actual 46.9% | Variance <strong>&minus;40.4%</strong>. New scope — urgent resource allocation needed.</div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-text"><strong>Heavy Equipment Parking</strong> — Plan 100% | Actual 35.7% | Variance <strong>&minus;64.3%</strong>. Significant behind schedule.</div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-text"><strong>Ambulance Parking (Clinic)</strong> — Plan 100% | Actual 40.2% | Variance <strong>&minus;59.8%</strong>. Critical delay.</div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-text"><strong>Material Storage Laydown Yard</strong> — Plan 100% | Actual 59.2% | Variance <strong>&minus;40.8%</strong>. Immediate attention required.</div>
+    </div>
+  </div>
+
+  <!-- ═══════ BUILDING COMPLETION ═══════ -->
+  <div class="section-title">CONSTRUCTION — BUILDING &amp; FACILITY COMPLETION STATUS (LEVEL 2)</div>
   <div class="two-col">
 
     <div class="panel">
-      <div class="panel-title"><span class="dot"></span>Buildings Progress — Plan vs Actual</div>
-      <div class="chart-wrap" style="height:360px"><canvas id="buildingChart"></canvas></div>
+      <div class="panel-title"><span class="dot"></span>Facilities Progress — Plan vs Actual (Top 16)</div>
+      <div class="chart-wrap" style="height:370px"><canvas id="buildingChart"></canvas></div>
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span class="dot" style="background:var(--gold)"></span>Building Completion Detail</div>
-      <div style="overflow-y:auto;max-height:380px">
+      <div class="panel-title"><span class="dot" style="background:var(--gold)"></span>All Facilities Completion Detail</div>
+      <div style="overflow-y:auto;max-height:390px">
         <table class="bld-table">
           <thead>
             <tr>
+              <th>#</th>
               <th>Building / Facility</th>
               <th>Plan%</th>
               <th>Actual%</th>
               <th>SPI</th>
-              <th style="width:90px">Progress</th>
+              <th style="width:85px">Status Bar</th>
             </tr>
           </thead>
           <tbody id="bldTbody"></tbody>
@@ -389,7 +438,7 @@
 
   </div>
 
-  <!-- LEVEL-4 FRONTS -->
+  <!-- ═══════ LEVEL-4 FRONTS ═══════ -->
   <div class="section-title">CONS LEVEL-4 — CONSTRUCTION FRONTS BREAKDOWN</div>
   <div class="two-col">
 
@@ -399,7 +448,7 @@
     </div>
 
     <div class="panel">
-      <div class="panel-title"><span class="dot" style="background:var(--accent)"></span>Project Milestones & Timeline</div>
+      <div class="panel-title"><span class="dot" style="background:var(--accent)"></span>Project Milestones &amp; Timeline</div>
       <div class="timeline">
         <div class="tl-item done">
           <div class="tl-name">Engineering Complete</div>
@@ -407,9 +456,9 @@
           <div class="tl-status" style="color:var(--green)">✓ 100% COMPLETE</div>
         </div>
         <div class="tl-item done">
-          <div class="tl-name">Mobilization & TCF</div>
+          <div class="tl-name">Mobilization &amp; TCF</div>
           <div class="tl-date">Oct 2023 – Oct 2024</div>
-          <div class="tl-status" style="color:var(--green)">✓ 100.0% COMPLETE</div>
+          <div class="tl-status" style="color:var(--green)">✓ 99.99% COMPLETE</div>
         </div>
         <div class="tl-item done">
           <div class="tl-name">Precast Work</div>
@@ -419,49 +468,54 @@
         <div class="tl-item done">
           <div class="tl-name">Underground Utilities Corridors</div>
           <div class="tl-date">Nov 2024 – Jan 2026</div>
-          <div class="tl-status" style="color:var(--green)">✓ Plan 100% | Actual 99.2%</div>
+          <div class="tl-status" style="color:var(--green)">✓ Plan 100% | Actual 99.31%</div>
         </div>
         <div class="tl-item active">
           <div class="tl-name">Admin Building</div>
           <div class="tl-date">Jul 2024 – Aug 2026</div>
-          <div class="tl-status" style="color:var(--gold)">⟳ Plan 99.3% | Actual 83.4%  ▼&minus;15.9%</div>
+          <div class="tl-status" style="color:var(--gold)">⟳ Plan 99.56% | Actual 85.91% ▼&minus;13.65%</div>
         </div>
         <div class="tl-item late">
           <div class="tl-name">Fire Station Building</div>
           <div class="tl-date">Jul 2024 – Aug 2026</div>
-          <div class="tl-status" style="color:var(--red)">⚠ Plan 99.9% | Actual 83.3%  ▼&minus;16.6%</div>
+          <div class="tl-status" style="color:var(--red)">⚠ Plan 99.97% | Actual 84.50% ▼&minus;15.47%</div>
         </div>
         <div class="tl-item late">
           <div class="tl-name">Sanitary Liftstation</div>
           <div class="tl-date">Oct 2024 – Aug 2026</div>
-          <div class="tl-status" style="color:var(--red)">⚠ Plan 99.4% | Actual 64.6%  ▼&minus;34.8%</div>
+          <div class="tl-status" style="color:var(--red)">⚠ Plan 99.62% | Actual 65.68% ▼&minus;33.94%</div>
         </div>
         <div class="tl-item late">
           <div class="tl-name">Helipad Area</div>
           <div class="tl-date">Oct 2024 – Nov 2025</div>
-          <div class="tl-status" style="color:var(--red)">⚠ Plan 100% | Actual 60.4%  ▼&minus;39.6%</div>
+          <div class="tl-status" style="color:var(--red)">⚠ Plan 100% | Actual 60.36% ▼&minus;39.64%</div>
+        </div>
+        <div class="tl-item late">
+          <div class="tl-name">Road Works</div>
+          <div class="tl-date">In Progress</div>
+          <div class="tl-status" style="color:var(--red)">⚠ Plan 87.28% | Actual 46.89% ▼&minus;40.39%</div>
         </div>
         <div class="tl-item active">
           <div class="tl-name">Procurement Completion</div>
-          <div class="tl-date">Target: Jul 2026</div>
-          <div class="tl-status" style="color:var(--gold)">⟳ 95.03% Actual</div>
+          <div class="tl-date">Target: Aug 2026</div>
+          <div class="tl-status" style="color:var(--gold)">⟳ 95.49% Actual</div>
         </div>
         <div class="tl-item">
           <div class="tl-name">Contract Completion</div>
           <div class="tl-date">08 February 2027</div>
-          <div class="tl-status" style="color:var(--muted)">198 days remaining</div>
+          <div class="tl-status" style="color:var(--muted)">177 days remaining</div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- ENGINEERING -->
+  <!-- ═══════ ENGINEERING ═══════ -->
   <div class="section-title">ENGINEERING PROGRESS REPORT</div>
   <div class="three-col">
 
     <div class="panel">
-      <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Engineering Phases</div>
+      <div class="panel-title"><span class="dot" style="background:var(--green)"></span>Engineering Phases — Budget Distribution</div>
       <div class="chart-wrap" style="height:200px"><canvas id="engDonut"></canvas></div>
     </div>
 
@@ -512,8 +566,8 @@
 
   </div>
 
-  <!-- SUMMARY TABLE -->
-  <div class="section-title">PROGRESS SUMMARY TABLE — WEEK 164 / CUT-OFF 25-JUL-2026</div>
+  <!-- ═══════ SUMMARY TABLE ═══════ -->
+  <div class="section-title">PROGRESS SUMMARY TABLE — WEEK 167 / CUT-OFF 15-AUG-2026</div>
   <div class="panel">
     <table class="sum-table">
       <thead>
@@ -537,26 +591,26 @@
         <tr>
           <td>2</td>
           <td style="text-align:left;font-weight:700;color:var(--gold)">Procurement</td>
-          <td>44.9%</td><td>100%</td><td>94.84%</td><td>0%</td><td>0.19%</td>
-          <td>100%</td><td>95.03%</td>
-          <td class="var-neg">&minus;4.97%</td>
+          <td>44.9%</td><td>100%</td><td>95.38%</td><td>0%</td><td>0.11%</td>
+          <td>100%</td><td>95.49%</td>
+          <td class="var-neg">&minus;4.51%</td>
           <td><span class="chip chip-gold" style="font-size:9px">IN PROGRESS</span></td>
         </tr>
         <tr>
           <td>3</td>
           <td style="text-align:left;font-weight:700;color:var(--accent)">Construction</td>
-          <td>50.1%</td><td>97.23%</td><td>87.61%</td><td>0.28%</td><td>0.17%</td>
-          <td>97.51%</td><td>87.78%</td>
-          <td class="var-neg">&minus;9.73%</td>
+          <td>50.1%</td><td>98.05%</td><td>88.20%</td><td>0.15%</td><td>0.17%</td>
+          <td>98.19%</td><td>88.37%</td>
+          <td class="var-neg">&minus;9.83%</td>
           <td><span class="chip chip-red" style="font-size:9px">BEHIND</span></td>
         </tr>
         <tr>
           <td>4</td>
           <td style="text-align:left;font-weight:700">OVERALL PROGRESS</td>
-          <td>100%</td><td>98.61%</td><td>91.48%</td><td>0.14%</td><td>0.17%</td>
-          <td style="font-weight:700;color:var(--accent)">98.75%</td>
-          <td style="font-weight:700;color:var(--gold)">91.65%</td>
-          <td class="var-neg">&minus;7.10%</td>
+          <td>100%</td><td>99.02%</td><td>92.01%</td><td>0.07%</td><td>0.13%</td>
+          <td style="font-weight:700;color:var(--accent)">99.10%</td>
+          <td style="font-weight:700;color:var(--gold)">92.15%</td>
+          <td class="var-neg">&minus;6.95%</td>
           <td><span class="chip chip-red" style="font-size:9px">RECOVERY</span></td>
         </tr>
       </tbody>
@@ -567,57 +621,72 @@
 
 <div class="footer">
   <span class="live"></span>&nbsp;
-  RIYAS NGL FRACTIONATION FACILITIES ISF &nbsp;·&nbsp; Project Control Dashboard &nbsp;·&nbsp;
-  Week 164 &nbsp;·&nbsp; Cut-off 25-Jul-2026 &nbsp;|&nbsp;
-  Contractor: Sinohydro Corporation Limited &nbsp;|&nbsp;
-  Contract Completion: 08-Feb-2027 &nbsp;|&nbsp; Days Remaining: 198
+  RIYAS NGL FRACTIONATION FACILITIES ISF &nbsp;·&nbsp; Project Control Dashboard
+  &nbsp;·&nbsp; Week 167 &nbsp;·&nbsp; Cut-off 15-Aug-2026
+  &nbsp;|&nbsp; Contractor: Sinohydro Corporation Limited
+  &nbsp;|&nbsp; Contract Completion: 08-Feb-2027 &nbsp;|&nbsp; Days Remaining: 177
 </div>
 
+<!-- ═══════ SCRIPTS ═══════ -->
 <script>
-const BL=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#0077b6';
-const GR='#0a9e8a', RD='#d62839', GD='#e07b20', MT='#5a7a96';
+const BL='#0077b6', BL2='#005f99', GR='#0a9e8a', RD='#d62839', GD='#e07b20', MT='#5a7a96';
 const grid='rgba(0,60,120,0.07)';
-Chart.defaults.color=MT;Chart.defaults.borderColor=grid;
+Chart.defaults.color=MT;
+Chart.defaults.borderColor=grid;
 Chart.defaults.font.family="'Barlow',sans-serif";
 
-/* ── BUILDING DATA (Week 164 · 25-Jul-2026) ── */
+/* ─── ALL FACILITY DATA — Week 167 · 15-Aug-2026 ─── */
 const bld=[
-  {n:'Admin Building',             p:99.3, a:83.4},
-  {n:'Dinning Building',            p:99.1, a:88.7},
-  {n:'Fire Station Building',       p:99.9, a:83.3},
-  {n:'Clinic Building',             p:98.2, a:82.3},
-  {n:'Communication Tower',         p:100.0,a:94.7},
-  {n:'Gas Station Building',        p:98.3, a:83.6},
-  {n:'Central Maintenance Shop',    p:95.9, a:80.7},
-  {n:'Hydro Test Shop (CMS)',        p:99.6, a:84.5},
-  {n:'Masjid Building',             p:100.0,a:86.8},
-  {n:'Sanitary Liftstation',        p:99.4, a:64.6},
-  {n:'Material Coord. Bldg',        p:100.0,a:87.5},
-  {n:'Chemical Storage Bldg',       p:100.0,a:86.5},
-  {n:'Emergency Gen. Building',     p:100.0,a:90.6},
-  {n:'Contractor Building',         p:99.5, a:84.9},
-  {n:'Emergency Gen. (Helipad)',    p:100.0,a:100.0},
-  {n:'Helipad Area',                p:100.0,a:60.4},
-  {n:'Equipment Shelter (FS)',      p:99.1, a:83.3},
-  {n:'Sun Shelter (CMS)',           p:99.3, a:88.4},
-  {n:'Fuel Dispenser Shelter',      p:97.5, a:73.1},
-  {n:'Fuel Storage Tanks',          p:99.9, a:78.9},
-  {n:'Test Pit & Shelter',          p:99.6, a:92.5},
-  {n:'Hose Drying Shelter (FS)',    p:94.2, a:90.1},
-  {n:'Cylinder Storage Shelter',    p:98.4, a:90.6},
-  {n:'Smoking Shelter',             p:100.0,a:95.7},
-  {n:'Bus Drop Off Shelter',        p:100.0,a:91.6},
+  {n:'MOBILIZATION & TCF',                  p:100.00, a:99.99},
+  {n:'Precast Work',                        p:100.00, a:100.00},
+  {n:'Underground Utilities Corridors',     p:100.00, a:99.31},
+  {n:'Admin Building',                      p:99.56,  a:85.91},
+  {n:'Dinning Building',                    p:99.46,  a:89.73},
+  {n:'Fire Station Building',               p:99.97,  a:84.50},
+  {n:'Clinic Building',                     p:98.43,  a:83.78},
+  {n:'Communication Tower',                p:100.00, a:94.71},
+  {n:'Gas Station Building',               p:98.84,  a:84.58},
+  {n:'Central Maintenance Shop',           p:98.12,  a:81.45},
+  {n:'Hydro Test Shop (CMS)',               p:99.67,  a:84.95},
+  {n:'Masjid Building',                    p:100.00, a:87.17},
+  {n:'Sanitary Liftstation',               p:99.62,  a:65.68},
+  {n:'Material Coord. Bldg',              p:100.00, a:87.80},
+  {n:'Chemical Storage Bldg',             p:100.00, a:86.68},
+  {n:'Emergency Generator Bldg',          p:100.00, a:91.35},
+  {n:'Contractor Building',               p:99.62,  a:85.84},
+  {n:'Emergency Gen. (Helipad)',          p:100.00, a:99.97},
+  {n:'Helipad Area',                      p:100.00, a:60.36},
+  {n:'Equipment Shelter (FS)',            p:100.00, a:83.28},
+  {n:'Sun Shelter (CMS)',                 p:100.00, a:88.41},
+  {n:'Fuel Dispenser Shelter',            p:98.36,  a:73.85},
+  {n:'Fuel Storage Tanks',               p:100.00, a:79.36},
+  {n:'Test Pit & Shelter',               p:100.00, a:92.30},
+  {n:'Hose Drying Shelter (FS)',          p:94.96,  a:89.46},
+  {n:'Cylinder Storage Shelter',         p:98.70,  a:90.62},
+  {n:'Smoking Shelter',                  p:100.00, a:95.69},
+  {n:'Bus Drop Off Shelter',             p:100.00, a:91.57},
+  {n:'Material Storage Laydown Yard',    p:100.00, a:59.19},
+  {n:'Ambulance Parking (Clinic)',       p:100.00, a:40.24},
+  {n:'Covered Trucks Parking',          p:100.00, a:84.40},
+  {n:'Heavy Equipment Parking',         p:100.00, a:35.66},
+  {n:'Trash Enclosure',                 p:100.00, a:84.34},
+  {n:'Car Parking Space',               p:100.00, a:95.39},
+  {n:'Electrical Room',                 p:99.48,  a:99.30},
+  {n:'Storm Water Pond',                p:100.00, a:94.67},
+  {n:'Road Works',                      p:87.28,  a:46.89},
 ];
 bld.forEach(b=>b.spi=b.p>0?+(b.a/b.p).toFixed(3):1);
 
-/* ── BUILDING TABLE ── */
+/* ─── BUILD TABLE ─── */
 const tb=document.getElementById('bldTbody');
-bld.forEach(b=>{
+bld.forEach((b,idx)=>{
   const d=b.a-b.p;
   const sc=b.spi>=0.95?'spi-good':b.spi>=0.85?'spi-warn':'spi-bad';
   const pc=b.a>=b.p?'ahead':b.a>=b.p-10?'behind':'critical';
-  tb.innerHTML+=`<tr>
-    <td style="font-weight:500">${b.n}</td>
+  const rowBg=b.a<50?'background:#fff5f5':b.a<70?'background:#fffbf0':'';
+  tb.innerHTML+=`<tr style="${rowBg}">
+    <td style="color:var(--muted);font-size:10px">${idx+1}</td>
+    <td style="font-weight:500;font-size:11px">${b.n}</td>
     <td class="pct" style="color:${BL}">${b.p.toFixed(1)}%</td>
     <td class="pct ${pc}">${b.a.toFixed(1)}%</td>
     <td><span class="spi-badge ${sc}">${b.spi}</span></td>
@@ -627,20 +696,21 @@ bld.forEach(b=>{
         <div class="mini-act" style="width:${b.a}%;background:${b.a>=b.p?GR:b.a>=b.p-10?GD:RD}"></div>
       </div>
       <div style="font-size:9px;font-weight:600;color:${d>=0?GR:d>=-10?GD:RD}">${d>=0?'▲':'▼'}${Math.abs(d).toFixed(1)}%</div>
-    </td></tr>`;
+    </td>
+  </tr>`;
 });
 
-/* ── S-CURVE ── */
+/* ─── S-CURVE ─── */
 (()=>{
-  const w=[1,10,20,30,40,50,60,70,80,90,100,110,120,129,140,147,155,162,164];
-  const pl=[1,3,7,12,18,26,35,44,54,62,70,76,82,87,91,93.2,96.5,98.5,98.75];
-  const ac=[1,3,7,12,18,26,35,44,53,61,68,73,78,82,85,87.2,89.5,91.3,91.65];
-  const bl=[1,3,7,12,17,25,33,42,51,59,67,74,80,86,89,93.2,96,98.5,98.75];
+  const wks=[1,10,20,30,40,50,60,70,80,90,100,110,120,129,140,147,155,162,164,167];
+  const pl= [1,3, 7,12,18,26,35,44,54,62, 70, 76, 82, 87, 91,93.2,96.5,98.5,98.75,99.1];
+  const ac= [1,3, 7,12,18,26,35,44,53,61, 68, 73, 78, 82, 85,87.2,89.5,91.3,91.65,92.15];
+  const bl= [1,3, 7,12,17,25,33,42,51,59, 67, 74, 80, 86, 89,93.2,96,  98.5,98.75,99.1];
   new Chart(document.getElementById('scurveChart'),{type:'line',
-    data:{labels:w.map(x=>'Wk'+x),datasets:[
+    data:{labels:wks.map(x=>'Wk'+x),datasets:[
       {label:'Baseline',data:bl,borderColor:'rgba(0,60,120,0.22)',borderDash:[5,5],pointRadius:0,borderWidth:1.5,fill:false,tension:0.4},
-      {label:'Plan',data:pl,borderColor:BL,pointRadius:2,borderWidth:2,fill:false,tension:0.4},
-      {label:'Actual',data:ac,borderColor:GD,pointRadius:3,borderWidth:2.5,
+      {label:'Plan',   data:pl,borderColor:BL,pointRadius:2,borderWidth:2,fill:false,tension:0.4},
+      {label:'Actual', data:ac,borderColor:GD,pointRadius:3,borderWidth:2.5,
         fill:{target:'1',above:'rgba(224,123,32,0.05)',below:'rgba(214,40,57,0.07)'},tension:0.4},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
@@ -652,14 +722,14 @@ bld.forEach(b=>{
   });
 })();
 
-/* ── RADAR ── */
+/* ─── RADAR ─── */
 (()=>{
-  const lb=['Mobilization','Admin Bldg','Dining Bldg','Fire Station','Clinic','Comm Tower','Gas Station','CMS Shop','Masjid','Material Coord'];
-  const pl=[100,99.3,99.1,99.9,98.2,100,98.3,95.9,100,100];
-  const ac=[100,83.4,88.7,83.3,82.3,94.7,83.6,80.7,86.8,87.5];
+  const lb=['Mobilization','Admin Bldg','Dining Bldg','Fire Station','Clinic','Comm Tower','Gas Station','CMS Shop','Masjid','Mat. Coord'];
+  const pl=[100, 99.56,99.46,99.97,98.43,100,98.84,98.12,100,100];
+  const ac=[100, 85.91,89.73,84.50,83.78,94.71,84.58,81.45,87.17,87.80];
   new Chart(document.getElementById('radarChart'),{type:'radar',
     data:{labels:lb,datasets:[
-      {label:'Plan %',data:pl,borderColor:'rgba(0,119,182,0.7)',backgroundColor:'rgba(0,119,182,0.06)',pointBackgroundColor:BL,borderWidth:1.5,pointRadius:3},
+      {label:'Plan %',  data:pl,borderColor:'rgba(0,119,182,0.7)',backgroundColor:'rgba(0,119,182,0.06)',pointBackgroundColor:BL,borderWidth:1.5,pointRadius:3},
       {label:'Actual %',data:ac,borderColor:GD,backgroundColor:'rgba(224,123,32,0.08)',pointBackgroundColor:GD,borderWidth:2,pointRadius:3},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
@@ -671,14 +741,14 @@ bld.forEach(b=>{
   });
 })();
 
-/* ── MANPOWER ── */
+/* ─── MANPOWER ─── */
 (()=>{
   const m=['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11'];
   const p=[0,2,49,134,122,109,214,324,385,385,381];
-  const a=[0,2,49,49,49,67,67,81,81,81,81];
+  const a=[0,2,49, 49, 49, 67, 67, 81, 81, 81, 81];
   new Chart(document.getElementById('manpowerChart'),{type:'bar',
     data:{labels:m,datasets:[
-      {label:'Plan',data:p,backgroundColor:'rgba(0,119,182,0.32)',borderColor:BL,borderWidth:1,borderRadius:3},
+      {label:'Plan',  data:p,backgroundColor:'rgba(0,119,182,0.32)',borderColor:BL,borderWidth:1,borderRadius:3},
       {label:'Actual',data:a,backgroundColor:'rgba(10,158,138,0.55)',borderColor:GR,borderWidth:1,borderRadius:3},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
@@ -688,14 +758,14 @@ bld.forEach(b=>{
   });
 })();
 
-/* ── WEEKLY CONSTRUCTION ── */
+/* ─── WEEKLY CONSTRUCTION ─── */
 (()=>{
-  const w=['Wk159','Wk160','Wk161','Wk162','Wk163','Wk164'];
-  const p=[0.88,0.82,0.78,0.25,0.28,0.28];
-  const a=[0.35,0.32,0.30,0.30,0.17,0.17];
+  const wks=['Wk162','Wk163','Wk164','Wk165','Wk166','Wk167'];
+  const p=[0.25,0.28,0.28,0.20,0.15,0.15];
+  const a=[0.30,0.17,0.17,0.17,0.17,0.17];
   new Chart(document.getElementById('weeklyChart'),{type:'bar',
-    data:{labels:w,datasets:[
-      {label:'Plan %',data:p,backgroundColor:'rgba(0,119,182,0.32)',borderColor:BL,borderWidth:1,borderRadius:3},
+    data:{labels:wks,datasets:[
+      {label:'Plan %',  data:p,backgroundColor:'rgba(0,119,182,0.32)',borderColor:BL,borderWidth:1,borderRadius:3},
       {label:'Actual %',data:a,backgroundColor:'rgba(224,123,32,0.55)',borderColor:GD,borderWidth:1,borderRadius:3},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
@@ -705,65 +775,74 @@ bld.forEach(b=>{
   });
 })();
 
-/* ── BUILDING HORIZONTAL BAR ── */
+/* ─── BUILDING HORIZONTAL BAR (Top 16) ─── */
 (()=>{
-  const b=bld.slice(0,16);
+  const top=bld.slice(0,16);
   new Chart(document.getElementById('buildingChart'),{type:'bar',
     data:{
-      labels:b.map(x=>x.n.length>20?x.n.slice(0,20)+'…':x.n),
+      labels:top.map(x=>x.n.length>22?x.n.slice(0,22)+'…':x.n),
       datasets:[
-        {label:'Plan %',data:b.map(x=>x.p),backgroundColor:'rgba(0,119,182,0.38)',borderColor:BL,borderWidth:1,borderRadius:3},
-        {label:'Actual %',data:b.map(x=>x.a),
-          backgroundColor:b.map(x=>x.a>=x.p?'rgba(10,158,138,0.55)':x.a>=x.p-10?'rgba(224,123,32,0.55)':'rgba(214,40,57,0.55)'),
-          borderColor:b.map(x=>x.a>=x.p?GR:x.a>=x.p-10?GD:RD),borderWidth:1,borderRadius:3},
+        {label:'Plan %',  data:top.map(x=>x.p),backgroundColor:'rgba(0,119,182,0.38)',borderColor:BL,borderWidth:1,borderRadius:3},
+        {label:'Actual %',data:top.map(x=>x.a),
+          backgroundColor:top.map(x=>x.a>=x.p?'rgba(10,158,138,0.58)':x.a>=x.p-10?'rgba(224,123,32,0.58)':'rgba(214,40,57,0.58)'),
+          borderColor:top.map(x=>x.a>=x.p?GR:x.a>=x.p-10?GD:RD),borderWidth:1,borderRadius:3},
       ]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},
-      scales:{x:{grid:{color:grid},ticks:{font:{size:9},callback:v=>v+'%'},min:0,max:112},
-              y:{grid:{display:false},ticks:{font:{size:9}}}}}
+      scales:{
+        x:{grid:{color:grid},ticks:{font:{size:9},callback:v=>v+'%'},min:0,max:112},
+        y:{grid:{display:false},ticks:{font:{size:9}}}
+      }}
   });
 })();
 
-/* ── CONSTRUCTION FRONTS ── */
+/* ─── FRONTS CHART ─── */
 (()=>{
-  const lb=['MOB & TCF','Underground','Admin Bldg','Dining Bldg','Fire Station','Clinic','CMS Bldg','Masjid','Sanitary Lift','Mat. Coord'];
-  const fp=[100,100,99.3,99.1,99.9,98.2,95.9,100,99.4,100];
-  const fa=[100,99.2,83.4,88.7,83.3,82.3,80.7,86.8,64.6,87.5];
+  const lb=['MOB & TCF','Underground','Admin Bldg','Dining Bldg','Fire Station','Clinic','CMS Bldg','Masjid','Sanitary Lift','Road Works'];
+  const fp=[100,100,99.56,99.46,99.97,98.43,98.12,100,99.62,87.28];
+  const fa=[100,99.31,85.91,89.73,84.50,83.78,81.45,87.17,65.68,46.89];
   new Chart(document.getElementById('frontsChart'),{type:'bar',
     data:{labels:lb,datasets:[
-      {label:'Cum Plan %',data:fp,backgroundColor:'rgba(0,119,182,0.38)',borderColor:BL,borderWidth:1,borderRadius:4},
+      {label:'Cum Plan %',  data:fp,backgroundColor:'rgba(0,119,182,0.38)',borderColor:BL,borderWidth:1,borderRadius:4},
       {label:'Cum Actual %',data:fa,
-        backgroundColor:fa.map((v,i)=>v>=fp[i]?'rgba(10,158,138,0.55)':v>=fp[i]-10?'rgba(224,123,32,0.55)':'rgba(214,40,57,0.55)'),
+        backgroundColor:fa.map((v,i)=>v>=fp[i]?'rgba(10,158,138,0.58)':v>=fp[i]-10?'rgba(224,123,32,0.58)':'rgba(214,40,57,0.58)'),
         borderColor:fa.map((v,i)=>v>=fp[i]?GR:v>=fp[i]-10?GD:RD),borderWidth:1,borderRadius:4},
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},
-      scales:{x:{grid:{display:false},ticks:{font:{size:8},maxRotation:28}},
-              y:{grid:{color:grid},ticks:{font:{size:9},callback:v=>v+'%'},min:0,max:115}}}
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:8},maxRotation:28}},
+        y:{grid:{color:grid},ticks:{font:{size:9},callback:v=>v+'%'},min:0,max:115}
+      }}
   });
 })();
 
-/* ── ENG DONUT ── */
+/* ─── ENGINEERING DONUT ─── */
 (()=>{
   new Chart(document.getElementById('engDonut'),{type:'doughnut',
     data:{labels:['Mobilization','30% Design','60% Design','90% Design','IFC Package'],
       datasets:[{data:[300,9048,28120,29349,5266],
-        backgroundColor:['rgba(10,158,138,0.8)','rgba(0,180,216,0.8)','rgba(0,119,182,0.8)','rgba(224,123,32,0.8)','rgba(214,40,57,0.65)'],
+        backgroundColor:[
+          'rgba(10,158,138,0.82)','rgba(0,180,216,0.82)',
+          'rgba(0,119,182,0.82)','rgba(224,123,32,0.82)','rgba(214,40,57,0.68)'
+        ],
         borderColor:'#fff',borderWidth:3}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'65%',
-      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:9},padding:8}},
-        tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw.toLocaleString()} hrs`}}}}
+      plugins:{
+        legend:{position:'bottom',labels:{boxWidth:10,font:{size:9},padding:8}},
+        tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw.toLocaleString()} hrs`}}
+      }}
   });
 })();
 
-/* ── ANIMATE BARS ── */
+/* ─── ANIMATE PROGRESS BARS ─── */
 window.addEventListener('load',()=>{
   setTimeout(()=>{
     document.querySelectorAll('.pbar-fill,.proc-fill').forEach(el=>{
       const t=el.style.width;el.style.width='0';
       setTimeout(()=>{el.style.width=t;},100);
     });
-  },300);
+  },350);
 });
 </script>
 </body>
